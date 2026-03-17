@@ -1,7 +1,6 @@
 ## TaskFlow | Architecture & System Design
 
-![TaskFlow Header](https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&q=80&w=1200&h=400)
-
+![TaskFlow Header](taskflow-landing-page.png)
 ## 1. Project Title
 **TaskFlow: Scalable Enterprise Task Orchestration Platform**
 
