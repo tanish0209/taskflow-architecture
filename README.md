@@ -1,12 +1,9 @@
 ## TaskFlow | Architecture & System Design
 
 ![TaskFlow Header](taskflow-landing-page.png)
-## 1. Project Title
-**TaskFlow: Scalable Enterprise Task Orchestration Platform**
 
----
 
-## 2. Introduction
+## 1. Introduction
 Welcome to the official architecture documentation for **TaskFlow**. TaskFlow is a high-performance, real-time task management and project orchestration platform designed to streamline collaboration for modern teams.
 
 > [!IMPORTANT]
@@ -14,7 +11,7 @@ Welcome to the official architecture documentation for **TaskFlow**. TaskFlow is
 
 ---
 
-## 3. System Overview
+## 2. System Overview
 ### Purpose
 The platform addresses the complexities of multi-tenant project management, providing a unified workspace for organizations to track progress, manage resources, and maintain real-time synchronization across distributed teams.
 
@@ -25,11 +22,11 @@ The platform addresses the complexities of multi-tenant project management, prov
 *   **Auditability**: Comprehensive activity logging and notification systems for all state transitions.
 
 ### Operational Workflow
-Users interact with a React-based frontend that communicates with a decoupled backend. Business logic is executed in a stateless service layer, while real-time events are dispatched via a dedicated WebSocket cluster.
+Users interact with a Next-based frontend that communicates with a decoupled backend. Business logic is executed in a stateless service layer, while real-time events are dispatched via a dedicated WebSocket cluster.
 
 ---
 
-## 4. Architecture Overview
+## 3. Architecture Overview
 
 ### High-Level Diagram
 ```mermaid
@@ -55,7 +52,7 @@ graph TD
     end
 ```
 
-*   **Client Layer**: A responsive PWA built with React, leveraging Tailwind CSS for Atomic CSS architecture.
+*   **Client Layer**: A responsive PWA built with Next, leveraging Tailwind CSS for Atomic CSS architecture.
 *   **Frontend Application**: Next.js App Router utilizing Server Components for performance and Client Components for interactivity.
 *   **Backend API Layer**: RESTful API endpoints hosted as serverless functions, ensuring high availability.
 *   **Caching Layer**: Implementation of Next.js Data Cache and stale-while-revalidate (SWR) patterns for optimized data fetching.
@@ -64,7 +61,7 @@ graph TD
 
 ---
 
-## 5. Technology Stack
+## 4. Technology Stack
 
 ### Frontend
 *   **Framework**: Next.js 15 (App Router)
@@ -90,17 +87,17 @@ graph TD
 
 ---
 
-## 6. System Components
+## 5. System Components
 
-*   **User Interface**: A modular system of shadcn/ui components optimized for accessibility and performance.
-*   **API Services**: Twelve+ specialized services (Project, Task, Auth, etc.) that encapsulate all domain-specific logic.
+*   **User Interface**: A modular system of components optimized for accessibility and performance.
+*   **API Services**: 12+ specialized services (Project, Task, Auth, etc.) that encapsulate all domain-specific logic.
 *   **Data Storage**: A robust schema designed for relational integrity, featuring Cascading deletes and soft-delete capabilities.
 *   **Authentication Layer**: Secure session-based authentication with protected route middleware and JWT support.
 *   **Messaging System**: A dedicated WebSocket server handling event broadcasting for task movements, status updates, and mentions.
 
 ---
 
-## 7. Backend Architecture
+## 6. Backend Architecture
 
 The backend follows a **Clean Architecture** approach, separating concerns into distinct layers:
 
@@ -113,7 +110,7 @@ The backend follows a **Clean Architecture** approach, separating concerns into 
 
 ---
 
-## 8. Database Design (Conceptual)
+## 7. Database Design (Conceptual)
 
 The data model is designed for strict relational integrity and scalability.
 
@@ -128,7 +125,7 @@ The data model is designed for strict relational integrity and scalability.
 
 ---
 
-## 9. Performance & Scalability Considerations
+## 8. Performance & Scalability Considerations
 
 *   **Optimized Queries**: All database queries are indexed on `cuid` fields and frequently filtered columns like `status` and `projectId`.
 *   **Horizontal Scaling**: The stateless nature of the Next.js API allows handles traffic spikes by scaling serverless instances.
@@ -137,7 +134,7 @@ The data model is designed for strict relational integrity and scalability.
 
 ---
 
-## 10. Security Considerations
+## 9. Security Considerations
 
 *   **Authentication**: Credentials-based login with industry-standard Bcrypt hashing.
 *   **Role-Based Access (RBAC)**: Middleware strictly enforces that actions like `DELETE_PROJECT` are only available to `ADMIN` or `MANAGER` roles.
@@ -146,7 +143,7 @@ The data model is designed for strict relational integrity and scalability.
 
 ---
 
-## 11. DevOps & Deployment
+## 10. DevOps & Deployment
 
 *   **Build Pipeline**: Automated TypeScript transpilation and Prisma client generation.
 *   **Deployment**: Continuous Deployment to Vercel (Edge) and Render (WebSockets) via GitHub hooks.
@@ -155,7 +152,7 @@ The data model is designed for strict relational integrity and scalability.
 
 ---
 
-## 12. Repository Scope
+## 11. Repository Scope
 
 This repository specifically contains:
 *   ✅ Comprehensive Architecture Documentation
@@ -169,7 +166,7 @@ This repository specifically contains:
 
 ---
 
-## 13. Disclaimer
+## 12. Disclaimer
 
 > [!CAUTION]
 > The production codebase of TaskFlow is a proprietary software asset and is not included in this repository. Any attempt to reverse-engineer or replicate the system based on these architectural docs should respect the copyright and intellectual property rights of the owners.
